@@ -1,0 +1,451 @@
+/* --- 1. GLOBAL STYLES & FONT IMPORT --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  /* This uses the 'Poppins' font you imported in the HTML */
+  font-family: 'Poppins', sans-serif;
+  color: #232323; /* Dark text from calculator */
+  
+  /* Gradient background from your calculator */
+  background: linear-gradient(320deg, #eb92be, #ffef78, #63c9b4);
+  background-attachment: fixed; /* Keeps gradient in place on scroll */
+  min-height: 100vh;
+}
+
+/* Make images responsive by default */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Set a consistent max-width for content */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px 20px 20px; /* Add padding for sticky nav and bottom */
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #232323;
+  /* Pink accent border */
+  border-bottom: 3px solid #d72880;
+  padding-bottom: 10px;
+}
+
+/* --- 2. "GLASS" CARD STYLES --- */
+/* Apply the glass card effect to all main containers */
+nav,
+section {
+  background: rgba(255, 255, 255, 0.30);
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+  border-radius: 16px; /* Matching calculator's rounded corners */
+}
+
+/* --- 3. NAVIGATION BAR --- */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  position: fixed; /* Make the nav bar stick to the top */
+  top: 20px; /* Give it space from the top */
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px); /* Full width minus 20px padding on each side */
+  max-width: 1200px;
+  z-index: 100;
+}
+
+nav .left a {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #d72880; /* Pink accent color */
+}
+
+nav .right {
+  display: flex;
+  gap: 20px;
+}
+
+nav .right a {
+  text-decoration: none;
+  color: #232323;
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s ease;
+}
+
+nav .right a:hover {
+  color: #d72880;
+}
+
+/* --- 4. HERO SECTION --- */
+.hero-section {
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero-section .text {
+  flex: 2;
+}
+
+.hero-section .headshot {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-section .headshot img {
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  /* Glass border for the image */
+  border: 5px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section h2 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-align: left;
+  border-bottom: none; /* No border for the main hero heading */
+}
+
+.hero-section p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.hero-section .links {
+  display: flex;
+  gap: 15px;
+}
+
+/* Style links like the calculator's pink buttons */
+.hero-section .links a {
+  text-decoration: none;
+  color: #fff;
+  background: #d72880;
+  padding: 12px 20px;
+  border-radius: 10px; /* Slightly rounded */
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section .links a:hover {
+  transform: translateY(-3px);
+  background-color: #c21a6a; /* Darker pink */
+}
+
+/* --- 5. SKILLS SECTION --- */
+.skills-section {
+  padding: 40px;
+  margin-top: 20px;
+}
+
+.skills-section .text {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+  font-size: 1.1rem;
+}
+
+.skills-section .cells {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+/* Make each skill cell a mini glass card */
+.skills-section .cell {
+  background: rgba(255, 255, 255, 0.5); /* Slightly more transparent */
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  box-shadow: 0 4px 15px rgba(35, 35, 35, 0.05);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.skills-section .cell:hover {
+  transform: translateY(-5px);
+}
+
+.skills-section .cell img {
+  width: 60px;
+  height: 60px;
+}
+
+.skills-section .cell span {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* --- 6. TESTIMONY SECTION --- */
+.testimony-section {
+  padding: 40px;
+  margin-top: 20px;
+}
+
+.testimony-section .group {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.testimony-section .person-details {
+  flex-basis: 200px;
+  text-align: center;
+}
+
+.testimony-section .person-details img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 3px solid rgba(255, 255, 255, 0.7);
+}
+
+.testimony-section .person-details p:first-of-type {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #d72880;
+}
+
+.testimony-section .person-details p:last-of-type {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.testimony-section .text {
+  flex: 1;
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.8;
+  border-left: 3px solid #d72880;
+  padding-left: 30px;
+}
+
+/* --- 7. CONTACT SECTION --- */
+.contact-section {
+  padding: 40px;
+  margin-top: 20px;
+}
+
+.contact-section .group {
+  display: flex;
+  gap: 40px;
+}
+
+.contact-section .text {
+  flex: 1;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.contact-section form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-section label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+
+/* Style form inputs like the calculator screen */
+.contact-section input,
+.contact-section textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 2px 5px rgba(35, 35, 35, 0.05);
+  color: #232323;
+}
+
+.contact-section input:focus,
+.contact-section textarea:focus {
+  outline: 2px solid #d72880;
+}
+
+/* Style submit button like the calculator buttons */
+.contact-section button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: #d72880;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-section button:hover {
+  background-color: #c21a6a;
+}
+
+/* --- 8. RESPONSIVE (MOBILE) STYLES --- */
+@media (max-width: 768px) {
+  /* Make nav bar links smaller and stack */
+  nav {
+    flex-direction: column;
+    gap: 15px;
+    position: static; /* Don't stick on mobile */
+    margin: 20px auto;
+  }
+  
+  main {
+    padding-top: 20px; /* Reset padding */
+  }
+
+  nav .right {
+    width: 100%;
+    justify-content: space-around;
+  }
+  
+  nav .right a span {
+    display: none; /* Hide text, just show icons */
+  }
+
+  /* Stack sections that were side-by-side */
+  .hero-section,
+  .testimony-section .group,
+  .contact-section .group {
+    flex-direction: column;
+  }
+
+  .hero-section {
+    /* Put image on top for mobile */
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  
+  .hero-section h2 {
+    text-align: center;
+  }
+
+  .hero-section .links {
+    justify-content: center;
+    flex-wrap: wrap; /* Allow links to wrap */
+  }
+  
+  .hero-section .headshot img {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .testimony-section .text {
+    border-left: none;
+    border-top: 3px solid #d72880;
+    padding-left: 0;
+    padding-top: 30px;
+    text-align: center;
+  }
+
+  /* Make skills grid 2 columns */
+  .skills-section .cells {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --- 8. PROJECTS SECTION --- */
+.projects-section {
+  padding: 40px;
+  margin-top: 20px;
+}
+
+.project-grid {
+  display: grid;
+  /* This creates 1-3 columns depending on the screen size */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px; /* Space between the cards */
+}
+
+.project-card {
+  /* This is the mini "glass card" style */
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  box-shadow: 0 4px 15px rgba(35, 35, 35, 0.05);
+  border-radius: 16px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column; /* Stacks content vertically */
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px); /* Lifts the card on hover */
+}
+
+.project-card h3 {
+  color: #d72880; /* Pink accent color */
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  flex-grow: 1; /* This makes all cards the same height */
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+}
+
+.project-card a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #232323;
+  padding: 10px 15px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.project-card a:hover {
+  background: #fff; /* Brightens the button on hover */
+}
