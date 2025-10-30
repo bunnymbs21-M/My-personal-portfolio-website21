@@ -1,451 +1,751 @@
 /* --- 1. GLOBAL STYLES & FONT IMPORT --- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+:root{
+  --accent-red: #d32f2f;
+  --accent-red-dark: #b02727;
+  --accent-green: #27ae60;
+  --bg-red: #ff6b6b;
+  --bg-mid: #a8e6c7;
+  --bg-green: #27ae60;
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  /* This uses the 'Poppins' font you imported in the HTML */
-  font-family: 'Poppins', sans-serif;
-  color: #232323; /* Dark text from calculator */
-  
-  /* Gradient background from your calculator */
-  background: linear-gradient(320deg, #eb92be, #ffef78, #63c9b4);
-  background-attachment: fixed; /* Keeps gradient in place on scroll */
-  min-height: 100vh;
-}
-
-/* Make images responsive by default */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Set a consistent max-width for content */
-main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 100px 20px 20px 20px; /* Add padding for sticky nav and bottom */
-}
-
-h2 {
-  font-size: 2.5rem;
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 40px;
-  color: #232323;
-  /* Pink accent border */
-  border-bottom: 3px solid #d72880;
-  padding-bottom: 10px;
-}
-
-/* --- 2. "GLASS" CARD STYLES --- */
-/* Apply the glass card effect to all main containers */
-nav,
-section {
-  background: rgba(255, 255, 255, 0.30);
-  backdrop-filter: blur(5.5px);
-  -webkit-backdrop-filter: blur(5.5px);
-  border: 1px solid rgba(255, 255, 255, 0.34);
-  box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
-  border-radius: 16px; /* Matching calculator's rounded corners */
-}
-
-/* --- 3. NAVIGATION BAR --- */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 30px;
-  position: fixed; /* Make the nav bar stick to the top */
-  top: 20px; /* Give it space from the top */
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 40px); /* Full width minus 20px padding on each side */
-  max-width: 1200px;
-  z-index: 100;
-}
-
-nav .left a {
-  font-size: 1.5rem;
-  font-weight: 600;
-  text-decoration: none;
-  color: #d72880; /* Pink accent color */
-}
-
-nav .right {
-  display: flex;
-  gap: 20px;
-}
-
-nav .right a {
-  text-decoration: none;
-  color: #232323;
-  font-weight: 600;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: color 0.3s ease;
-}
-
-nav .right a:hover {
-  color: #d72880;
-}
-
-/* --- 4. HERO SECTION --- */
-.hero-section {
-  padding: 40px;
-  display: flex;
-  align-items: center;
-  gap: 40px;
-}
-
-.hero-section .text {
-  flex: 2;
-}
-
-.hero-section .headshot {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-section .headshot img {
-  border-radius: 50%;
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
-  /* Glass border for the image */
-  border: 5px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.hero-section h2 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  text-align: left;
-  border-bottom: none; /* No border for the main hero heading */
-}
-
-.hero-section p {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  margin-bottom: 30px;
-}
-
-.hero-section .links {
-  display: flex;
-  gap: 15px;
-}
-
-/* Style links like the calculator's pink buttons */
-.hero-section .links a {
-  text-decoration: none;
-  color: #fff;
-  background: #d72880;
-  padding: 12px 20px;
-  border-radius: 10px; /* Slightly rounded */
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.hero-section .links a:hover {
-  transform: translateY(-3px);
-  background-color: #c21a6a; /* Darker pink */
-}
-
-/* --- 5. SKILLS SECTION --- */
-.skills-section {
-  padding: 40px;
-  margin-top: 20px;
-}
-
-.skills-section .text {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 40px auto;
-  font-size: 1.1rem;
-}
-
-.skills-section .cells {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 20px;
-  justify-items: center;
-}
-
-/* Make each skill cell a mini glass card */
-.skills-section .cell {
-  background: rgba(255, 255, 255, 0.5); /* Slightly more transparent */
-  backdrop-filter: blur(5.5px);
-  -webkit-backdrop-filter: blur(5.5px);
-  border: 1px solid rgba(255, 255, 255, 0.34);
-  box-shadow: 0 4px 15px rgba(35, 35, 35, 0.05);
-  border-radius: 16px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  transition: transform 0.3s ease;
-}
-
-.skills-section .cell:hover {
-  transform: translateY(-5px);
-}
-
-.skills-section .cell img {
-  width: 60px;
-  height: 60px;
-}
-
-.skills-section .cell span {
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-/* --- 6. TESTIMONY SECTION --- */
-.testimony-section {
-  padding: 40px;
-  margin-top: 20px;
-}
-
-.testimony-section .group {
-  display: flex;
-  gap: 30px;
-  align-items: center;
-}
-
-.testimony-section .person-details {
-  flex-basis: 200px;
-  text-align: center;
-}
-
-.testimony-section .person-details img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  margin-bottom: 15px;
-  border: 3px solid rgba(255, 255, 255, 0.7);
-}
-
-.testimony-section .person-details p:first-of-type {
-  font-weight: 600;
-  font-size: 1.2rem;
-  color: #d72880;
-}
-
-.testimony-section .person-details p:last-of-type {
-  font-size: 0.9rem;
-  color: #333;
-}
-
-.testimony-section .text {
-  flex: 1;
-  font-size: 1.1rem;
-  font-style: italic;
-  line-height: 1.8;
-  border-left: 3px solid #d72880;
-  padding-left: 30px;
-}
-
-/* --- 7. CONTACT SECTION --- */
-.contact-section {
-  padding: 40px;
-  margin-top: 20px;
-}
-
-.contact-section .group {
-  display: flex;
-  gap: 40px;
-}
-
-.contact-section .text {
-  flex: 1;
-  font-size: 1.1rem;
-  line-height: 1.7;
-}
-
-.contact-section form {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.contact-section label {
-  font-weight: 600;
-  margin-bottom: 5px;
-  margin-top: 15px;
-}
-
-/* Style form inputs like the calculator screen */
-.contact-section input,
-.contact-section textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.34);
-  border-radius: 10px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
-  background: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 2px 5px rgba(35, 35, 35, 0.05);
-  color: #232323;
-}
-
-.contact-section input:focus,
-.contact-section textarea:focus {
-  outline: 2px solid #d72880;
-}
-
-/* Style submit button like the calculator buttons */
-.contact-section button {
-  margin-top: 20px;
-  padding: 12px 20px;
-  background: #d72880;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.contact-section button:hover {
-  background-color: #c21a6a;
-}
-
-/* --- 8. RESPONSIVE (MOBILE) STYLES --- */
-@media (max-width: 768px) {
-  /* Make nav bar links smaller and stack */
-  nav {
-    flex-direction: column;
-    gap: 15px;
-    position: static; /* Don't stick on mobile */
-    margin: 20px auto;
+    /* responsive tokens */
+    --max-width: 1200px;
+    --container-pad: 20px;
   }
-  
+
+  /* Reset / box sizing */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* base text-size is responsive */
+    font-size: 16px;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    color: #232323;
+
+    /* Red + Green mixed gradient background */
+    background: linear-gradient(320deg, var(--bg-red), var(--bg-mid), var(--bg-green));
+    background-attachment: fixed;
+    min-height: 100vh;
+
+    /* comfortable reading on mobile */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Make images responsive by default */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Container */
   main {
-    padding-top: 20px; /* Reset padding */
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 100px var(--container-pad) 40px var(--container-pad);
+    width: calc(100% - (var(--container-pad) * 2));
+  }
+
+  /* Responsive headings */
+  h2 {
+    font-size: clamp(1.6rem, 2.2vw + 1rem, 2.5rem);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #232323;
+    border-bottom: 3px solid var(--accent-red);
+    padding-bottom: 10px;
+  }
+
+  /* Glass card effect */
+  nav,
+  section {
+    background: rgba(255, 255, 255, 0.30);
+    backdrop-filter: blur(5.5px);
+    -webkit-backdrop-filter: blur(5.5px);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+    border-radius: 16px;
+  }
+
+  /* --- NAV --- */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: var(--max-width);
+    z-index: 100;
+    gap: 12px;
+    transition: padding 0.2s ease, width 0.2s ease;
+  }
+
+  nav .left a {
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--accent-red);
   }
 
   nav .right {
-    width: 100%;
-    justify-content: space-around;
-  }
-  
-  nav .right a span {
-    display: none; /* Hide text, just show icons */
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    flex-wrap: wrap;
   }
 
-  /* Stack sections that were side-by-side */
-  .hero-section,
-  .testimony-section .group,
-  .contact-section .group {
-    flex-direction: column;
+  nav .right a {
+    text-decoration: none;
+    color: #232323;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.25s ease;
+    padding: 8px 10px;
+    border-radius: 8px;
   }
 
+  nav .right a:hover {
+    color: var(--accent-red);
+    background: rgba(255,255,255,0.08);
+  }
+
+  /* --- HERO --- */
   .hero-section {
-    /* Put image on top for mobile */
-    flex-direction: column-reverse;
-    text-align: center;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
   }
-  
+
+  .hero-section .text {
+    flex: 2 1 420px;
+    min-width: 260px;
+  }
+
+  .hero-section .headshot {
+    flex: 1 1 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-section .headshot img {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border: 5px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
   .hero-section h2 {
-    text-align: center;
+    font-size: clamp(1.8rem, 3vw + 1rem, 3rem);
+    margin-bottom: 18px;
+    text-align: left;
+    border-bottom: none;
+  }
+
+  .hero-section p {
+    font-size: clamp(1rem, 1.2vw + 0.2rem, 1.1rem);
+    line-height: 1.7;
+    margin-bottom: 30px;
   }
 
   .hero-section .links {
-    justify-content: center;
-    flex-wrap: wrap; /* Allow links to wrap */
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
   }
-  
-  .hero-section .headshot img {
-    width: 200px;
-    height: 200px;
+
+  .hero-section .links a {
+    text-decoration: none;
+    color: #fff;
+    background: var(--accent-red);
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   }
-  
-  .testimony-section .text {
-    border-left: none;
-    border-top: 3px solid #d72880;
-    padding-left: 0;
-    padding-top: 30px;
+
+  .hero-section .links a:hover {
+    transform: translateY(-3px);
+    background-color: var(--accent-green);
+  }
+
+  /* --- SKILLS --- */
+  .skills-section {
+    padding: 40px;
+    margin-top: 20px;
+  }
+
+  .skills-section .text {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    font-size: 1.05rem;
+  }
+
+  .skills-section .cells {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 18px;
+    justify-items: center;
+  }
+
+  .skills-section .cell {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5.5px);
+    -webkit-backdrop-filter: blur(5.5px);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    box-shadow: 0 4px 15px rgba(35, 35, 35, 0.05);
+    border-radius: 16px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    transition: transform 0.2s ease;
+  }
+
+  .skills-section .cell:hover {
+    transform: translateY(-6px);
+  }
+
+  .skills-section .cell img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .skills-section .cell span {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  /* --- TESTIMONY --- */
+  .testimony-section {
+    padding: 40px;
+    margin-top: 20px;
+  }
+
+  .testimony-section .group {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .testimony-section .person-details {
+    flex-basis: 220px;
     text-align: center;
   }
 
-  /* Make skills grid 2 columns */
-  .skills-section .cells {
-    grid-template-columns: repeat(2, 1fr);
+  .testimony-section .person-details img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 3px solid rgba(255, 255, 255, 0.7);
   }
-}
 
-/* --- 8. PROJECTS SECTION --- */
-.projects-section {
-  padding: 40px;
-  margin-top: 20px;
-}
+  .testimony-section .person-details p:first-of-type {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--accent-red);
+  }
 
-.project-grid {
-  display: grid;
-  /* This creates 1-3 columns depending on the screen size */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px; /* Space between the cards */
-}
+  .testimony-section .person-details p:last-of-type {
+    font-size: 0.95rem;
+    color: #333;
+  }
 
-.project-card {
-  /* This is the mini "glass card" style */
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(5.5px);
-  -webkit-backdrop-filter: blur(5.5px);
-  border: 1px solid rgba(255, 255, 255, 0.34);
-  box-shadow: 0 4px 15px rgba(35, 35, 35, 0.05);
-  border-radius: 16px;
-  padding: 25px;
-  display: flex;
-  flex-direction: column; /* Stacks content vertically */
-  transition: transform 0.3s ease;
-}
+  .testimony-section .text {
+    flex: 1 1 380px;
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.8;
+    border-left: 3px solid var(--accent-red);
+    padding-left: 30px;
+  }
 
-.project-card:hover {
-  transform: translateY(-5px); /* Lifts the card on hover */
-}
+  /* --- CONTACT --- */
+  .contact-section {
+    padding: 40px;
+    margin-top: 20px;
+  }
 
-.project-card h3 {
-  color: #d72880; /* Pink accent color */
-  margin-bottom: 10px;
-}
+  /* NEW: contact section split into tiles/cards */
+  .contact-section .group {
+    /* use a two-column grid for the two tiles */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
 
-.project-card p {
-  flex-grow: 1; /* This makes all cards the same height */
-  margin-bottom: 15px;
-  font-size: 0.95rem;
-}
+  .contact-card {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.36);
+    box-shadow: 0 6px 18px rgba(35, 35, 35, 0.06);
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
 
-.project-card a {
-  text-decoration: none;
-  font-weight: 600;
-  color: #232323;
-  padding: 10px 15px;
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 8px;
-  text-align: center;
-  transition: background-color 0.3s ease;
-}
+  .contact-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
 
-.project-card a:hover {
-  background: #fff; /* Brightens the button on hover */
-}
+  .contact-card .card-title {
+    font-weight: 700;
+    color: #232323;
+    font-size: 1.05rem;
+  }
+
+  .contact-card .card-sub {
+    font-size: 0.95rem;
+    color: #555;
+  }
+
+  /* Keep form & text styles but scoped to the card */
+  .contact-card .text {
+    font-size: 1.03rem;
+    line-height: 1.6;
+  }
+
+  .contact-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .contact-card label {
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  /* Inputs (scoped) */
+  .contact-card input,
+  .contact-card textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 2px 5px rgba(35, 35, 35, 0.05);
+    color: #232323;
+  }
+
+  .contact-card input:focus,
+  .contact-card textarea:focus {
+    outline: 3px solid rgba(211,47,47,0.15);
+    box-shadow: 0 0 0 3px rgba(211,47,47,0.08);
+  }
+
+  .contact-card .btn-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+
+  .contact-card .btn-row .btn {
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.12s ease;
+  }
+
+  .contact-card .btn.primary {
+    background: var(--accent-red);
+    color: #fff;
+  }
+
+  .contact-card .btn.secondary {
+    background: transparent;
+    color: var(--accent-red);
+    border: 1px solid rgba(211,47,47,0.18);
+  }
+
+  .contact-card .btn.primary:hover {
+    background: var(--accent-green);
+    transform: translateY(-2px);
+  }
+
+  .contact-card .btn.secondary:hover {
+    background: rgba(39,174,96,0.06);
+    color: var(--accent-green);
+    transform: translateY(-2px);
+  }
+
+  /* --- CONTACT defaults for inner layout (legacy support) --- */
+  .contact-section .text {
+    /* fallback when using a single card or older markup */
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .contact-section form {
+    display: block;
+  }
+
+  /* Buttons (legacy) */
+  .contact-section button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background: var(--accent-red);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+  }
+
+  .contact-section button:hover {
+    background-color: var(--accent-green);
+    transform: translateY(-2px);
+  }
+
+  /* --- PROJECTS --- */
+  .projects-section {
+    padding: 40px;
+    margin-top: 20px;
+  }
+
+  /* Grid of project tiles */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  /* Each project becomes a tile/card */
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.55);
+    border: 1px solid rgba(255,255,255,0.36);
+    box-shadow: 0 6px 18px rgba(35,35,35,0.06);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    min-height: 220px;
+  }
+
+  /* Hover lift */
+  .project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 28px rgba(35,35,35,0.10);
+  }
+
+  /* Optional image banner inside tile */
+  .project-card img.project-hero {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  /* Content inside tile */
+  .project-card .project-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1 1 auto;
+  }
+
+  .project-card .project-title {
+    font-weight: 700;
+    color: #232323;
+    font-size: 1.05rem;
+  }
+
+  .project-card .project-desc {
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1.4;
+  }
+
+  /* Tags row */
+  .project-card .project-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+
+  .project-card .project-tag {
+    font-size: 0.78rem;
+    padding: 6px 8px;
+    background: rgba(0,0,0,0.04);
+    border-radius: 8px;
+    color: #222;
+    font-weight: 600;
+  }
+
+  /* Action buttons row - separate buttons for links */
+  .project-card .project-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 8px;
+  }
+
+  /* Primary/secondary button styles */
+  .project-card .project-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.15s ease, transform 0.12s ease;
+  }
+
+  /* Primary: demo / live link */
+  .project-card .project-btn.primary {
+    background: var(--accent-red);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(211,47,47,0.12);
+  }
+
+  /* Secondary: repo or details */
+  .project-card .project-btn.secondary {
+    background: transparent;
+    color: var(--accent-red);
+    border: 1px solid rgba(211,47,47,0.18);
+  }
+
+  /* Hover states */
+  .project-card .project-btn.primary:hover {
+    background: var(--accent-green);
+    transform: translateY(-2px);
+  }
+  .project-card .project-btn.secondary:hover {
+    background: rgba(39,174,96,0.06);
+    color: var(--accent-green);
+    transform: translateY(-2px);
+  }
+
+  /* Focus states for accessibility */
+  .project-card .project-btn:focus {
+    outline: 3px solid rgba(39,174,96,0.12);
+    outline-offset: 2px;
+  }
+
+  /* ==========================================================
+     --- RESPONSIVE (TABLET & MOBILE) ---
+     ========================================================== */
+
+  /* Tablet first: screens <= 1024px */
+  @media (max-width: 1024px) {
+    main {
+      padding-top: 90px;
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+
+    /* nav becomes non-fixed on smaller tablets to avoid overlap */
+    nav {
+      position: static;
+      transform: none;
+      left: auto;
+      top: auto;
+      width: 94%;
+      margin: 16px auto;
+      padding: 14px 18px;
+    }
+
+    nav .left a {
+      font-size: 1.1rem;
+    }
+
+    nav .right {
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    /* hero layout stacks more fluidly */
+    .hero-section {
+      padding: 28px;
+      gap: 18px;
+    }
+
+    .hero-section .headshot img {
+      width: 220px;
+      height: 220px;
+    }
+
+    .hero-section .text {
+      text-align: left;
+    }
+
+    /* testimony block becomes stacked */
+    .testimony-section .group {
+      align-items: flex-start;
+    }
+
+    .testimony-section .text {
+      border-left: none;
+      border-top: 3px solid var(--accent-red);
+      padding-left: 0;
+      padding-top: 18px;
+    }
+
+    /* project grid can show 2 columns if space available */
+    .project-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+  }
+
+  /* Mobile: screens <= 768px */
+  @media (max-width: 768px) {
+    h2 {
+      font-size: clamp(1.4rem, 4vw + 0.6rem, 2rem);
+    }
+
+    /* nav simplified and centered */
+    nav {
+      width: 96%;
+      padding: 12px 14px;
+    }
+
+    nav .right a {
+      padding: 10px;
+    }
+
+    /* stack hero vertically, image on top */
+    .hero-section {
+      flex-direction: column-reverse;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero-section h2 {
+      text-align: center;
+    }
+
+    .hero-section .headshot img {
+      width: 180px;
+      height: 180px;
+    }
+
+    /* skills -> 2 columns on phones, then 1 on very small */
+    .skills-section .cells {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    /* contact: switch contact grid to single column tile stack */
+    .contact-section .group {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    /* testimony remains stacked (flex) */
+    .testimony-section .group {
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* form controls larger for touch */
+    .contact-section input,
+    .contact-section textarea,
+    .contact-section button {
+      font-size: 1rem;
+      padding: 14px;
+    }
+
+    .project-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    /* Make project action buttons stack on small widths */
+    .project-card .project-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .project-card .project-btn {
+      width: 100%;
+    }
+  }
+
+  /* Small mobile: screens <= 480px */
+  @media (max-width: 480px) {
+    main {
+      padding-top: 80px;
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+
+    nav {
+      margin: 12px auto;
+      width: 98%;
+      padding: 10px 12px;
+    }
+
+    .hero-section .headshot img {
+      width: 140px;
+      height: 140px;
+    }
+
+    .skills-section .cells {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .testimony-section .person-details {
+      flex-basis: auto;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+    }
+
+    .hero-section h2 {
+      font-size: 1.9rem;
+    }
+  }
